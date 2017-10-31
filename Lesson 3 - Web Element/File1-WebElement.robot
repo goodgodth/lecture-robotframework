@@ -10,7 +10,8 @@ Open Web
 Test1
     [Tags]    DEBUG
     [Documentation]   Test Google
-    Open Web
+    Open Browser    https://v4-alpha.getbootstrap.com/components/forms/    chrome
+    Wait Until Element Is Visible    //*[@id="carbonads"]
     Input Text    xpath=//*[@id="exampleInputEmail1"]    goodgod.th@gmail.com
     Input Text    //*[@id="exampleInputPassword1"]    goodgod.th@gmail.com
     Select From List by Label    id=exampleSelect1    3
@@ -20,7 +21,7 @@ Test1
     Input Text    //*[@id="exampleTextarea"]    This is a book${\n}Book${SPACE}${SPACE}${SPACE}${SPACE}kko
 
     #Next Lesson
-    #Choose File    //*[@id="exampleInputFile"]    ${ABSOLUTE_PATH}/18891886_1074470549321057_4170814846182489955_o.jpg
+    Choose File    //*[@id="exampleInputFile"]    18891886_1074470549321057_4170814846182489955_o.jpg
 
     Select Radio Button    optionsRadios    option2
 
@@ -30,10 +31,6 @@ Test1
     Select CheckBox    //div[@class='form-check']/label/input[@type="checkbox" and @class="form-check-input"]
     Sleep    2s
     UnSelect CheckBox    //div[@class='form-check']/label/input[@type="checkbox" and @class="form-check-input"]
-
-
-
-    #Click Element    xpath=/html/body/div[2]/div/div[2]/div[1]/form/button
 
 
     ${value}=    Get Text    //*[@id='emailHelp']
@@ -59,4 +56,16 @@ Test1
     ${value}=    Get Location
     log to console    ${value}${\n}
 
-    Close Browser
+    Click Element    xpath=/html/body/div[2]/div/div[2]/div[1]/form/button
+
+    #Close Browser
+
+
+
+    ${str} =	Remove String	 Robot Framework	work
+    Should Be Equal As String    ${str}    Robot Frame
+
+    ${str} =	Replace String	Hello, world!	world	tellus
+    Should Be Equal As String	${str}	 Hello, tellus!
+
+    @{words} =	Split String	${string}
